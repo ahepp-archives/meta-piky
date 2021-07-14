@@ -1,0 +1,14 @@
+[Unit]
+Description=autoAP Automatic Access Point When No WiFi Connection (wpa-autoap@wlan0.service)
+#After=network.target network-online.target wpa_supplicant@%i.service sys-subsystem-net-devices-%i.device
+Before=wpa_supplicant@%i.service
+BindsTo=wpa_supplicant@%i.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/autoAP.sh start %I
+Restart=on-failure
+TimeoutSec=1
+
+[Install]
+WantedBy=multi-user.target

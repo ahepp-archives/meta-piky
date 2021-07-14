@@ -1,0 +1,11 @@
+[Unit]
+Description=piky update
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/piky-update https://ahepp.dev/piky/image/latest /usr/share/piky/piky-private.pem
+
+[Install]
+WantedBy=multi-user.target
+
